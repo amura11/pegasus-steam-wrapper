@@ -16,7 +16,7 @@ if [[ $parent_process == "systemd" ]]; then
     # Launch the game with the specified ID
     /usr/games/steam -silent "$@" 2>&1 | tee >(
       while read line; do
-        if [[ $line == *"Game process removed: AppID game_id"* ]]; then
+        if [[ $line == *"Game process removed: AppID $game_id"* ]]; then
           sleep 10; steam -shutdown; break
         fi
       done
